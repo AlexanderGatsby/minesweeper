@@ -5,7 +5,7 @@
 #define N 10
 #define M 10
 
-void printMatrix(int A[][M], int C[][M]){
+void printMatrix(int A[][M]){
 	
 	int i, j;
 	
@@ -25,7 +25,7 @@ void printMatrix(int A[][M], int C[][M]){
 	}
 }
 
-
+/*
 void chosen(int C[][M]){
 	
 	int i, j;
@@ -37,6 +37,7 @@ void chosen(int C[][M]){
 		printf("\n");
 	}
 }
+*/
 
 
 int main() {
@@ -44,7 +45,7 @@ int main() {
 	int i, j, l, k, mine, a, b;
 	
 	int A[N][M];
-	int C[N][M];
+	//int C[N][M];
 	
 	
 	//This is for the random
@@ -61,7 +62,7 @@ int main() {
 			}else{
 				A[i][j] = 0;
 			}
-			C[i][j] = 0;
+			//C[i][j] = 0;
 		}
 	}
 	
@@ -73,8 +74,8 @@ int main() {
 			
 				for(l = -1; l <= 1; l++){
 					for(k = -1; k <= 1; k++){
-						
-						if ((i+l) >= 0 && (i+l) <= N && (j+k) >= 0 && (j+k) <= M){
+																
+						if ((i+l) >= 0 && (i+l) <= N && (j+k) >= 0 && (j+k) <= M-1){
 							if (A[i+l][j+k] != -1)
 							++A[i+l][j+k];
 						}
@@ -85,9 +86,9 @@ int main() {
 		}
 	}
 	
-	printMatrix(A, C);
+	printMatrix(A);
 	printf("\n");
-	chosen(C);
+	//chosen(C);
 	
 	return 0;
 }
