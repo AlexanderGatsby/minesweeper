@@ -11,41 +11,17 @@ void printMatrix(int A[][M]){
 	
 	for(i = 0; i < N; i++){
 		for(j = 0; j < M; j++){
-			/*
-			if (C[i][j] == 1){
 			printf("%3d", A[i][j]);	
-			} else{
-			printf(" . ");
-			}
-			*/
-			printf("%3d", A[i][j]);	
-			
 		}	
 		printf("\n");
 	}
 }
-
-/*
-void chosen(int C[][M]){
-	
-	int i, j;
-	
-	for(i = 0; i < N; i++){
-		for(j = 0; j < M; j++){
-			printf("%3d", C[i][j]);
-		}	
-		printf("\n");
-	}
-}
-*/
-
 
 int main() {
 	
 	int i, j, l, k, mine, a, b;
 	
 	int A[N][M];
-	//int C[N][M];
 	
 	
 	//This is for the random
@@ -62,7 +38,6 @@ int main() {
 			}else{
 				A[i][j] = 0;
 			}
-			//C[i][j] = 0;
 		}
 	}
 	
@@ -71,7 +46,7 @@ int main() {
 		for(j = 0; j < M; j++){
 			
 			if (A[i][j] == -1){
-			
+				
 				for(l = -1; l <= 1; l++){
 					for(k = -1; k <= 1; k++){
 																
@@ -87,8 +62,7 @@ int main() {
 	}
 	
 	printMatrix(A);
-	printf("\n");
-	//chosen(C);
+	
 	
 	return 0;
 }
