@@ -24,9 +24,26 @@ int main() {
 			}else{
 				A[i][j] = 0;
 			}
-			
 		}
 	}
+	
+	
+	for(i = 0; i < n; i++){
+		for(j = 0; j < m; j++){
+			
+			if (A[i][j] == -1){
+			
+				for(l = -1; l <= 1; l++){
+					for(k = -1; k <= 1; k++){
+						if (A[i+l][j+k] != -1)
+						++A[i+l][j+k];
+					}
+				}
+			}
+		}
+	}
+	
+	
 	
 	
 	for(i = 0; i < n; i++){
