@@ -5,18 +5,18 @@
 #define N 10
 #define M 10
 
-void printMatrix(int A[][M], int C[][M]){
+void printMatrix(int C[][M], int A[][M]){
 	
 	int i, j;
 	
 	for(i = 0; i < N; i++){
 		for(j = 0; j < M; j++){
-			if (A[i][j] == 1){
-				printf("%3d", A[i][j]);		
-			}else{
-				printf(" . ");
-			}
-		}	
+			
+			if (C[i][j] == 0)
+			printf(" . ");
+			else
+			printf(" %d ", A[i][j]);
+		}
 		printf("\n");
 	}
 }
@@ -35,8 +35,8 @@ int main() {
 	//Add the mines
 	for(i = 0; i < N; i++){
 		for(j = 0; j < M; j++){
-			//Get a random number between 0 - 2			
-			mine = rand() % 3;
+			//Get a random number between 0 - 3		
+			mine = rand() % 4;
 			//Put the mine in the random choosen place
 			if (mine == 1){
 				A[i][j] = -1;
@@ -67,7 +67,16 @@ int main() {
 		}
 	}
 	
-	printMatrix(A, C);
+	
+	do{
+		printMatrix(C, A);
+		scanf("%d", &a);
+		scanf("%d", &b);
+		C[a][b] = 1;
+		
+	}while(a != -1);
+	
+	
 	
 	return 0;
 }
