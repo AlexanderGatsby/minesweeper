@@ -56,7 +56,9 @@ void endGame(int A[][M], int a, int b){
 
 int main() {
 	
-	int i, j, l, k, mine, a, b, mines;
+	int i, j, l, k, mine, a, b, mines, win;
+	
+	win = 0;
 	
 	int A[N][M];
 	int C[N][M];
@@ -116,7 +118,15 @@ int main() {
 		if (A[a][b] == -1){
 			endGame(A, a, b);
 			a = -1;
+		}else {
+			++win;
+			if (win == (N*M)-mines){
+				printf("\nYou win!");
+				a = -1;
+			}
+			
 		}
+		
 	}while(a != -1);
 	
 	
