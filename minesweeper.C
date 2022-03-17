@@ -21,6 +21,25 @@ void printMatrix(int C[][M], int A[][M]){
 	}
 }
 
+
+void endGame(int A[][M], int a, int b){
+	
+	int i, j;
+	
+	for(i = 0; i < N; i++){
+		for(j = 0; j < M; j++){
+			if (i == a && b == j)
+			printf("  X", A[i][j]);
+			else if (A[i][j] == -1)
+			printf("  *", A[i][j]);
+			else
+			printf("%3d", A[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+
 int main() {
 	
 	int i, j, l, k, mine, a, b;
@@ -74,6 +93,10 @@ int main() {
 		scanf("%d", &b);
 		C[a][b] = 1;
 		
+		if (A[a][b] == -1){
+			endGame(A, a, b);
+			a = -1;
+		}
 	}while(a != -1);
 	
 	
