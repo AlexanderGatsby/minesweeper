@@ -11,6 +11,11 @@ void printMatrix(int C[][M], int A[][M], int *ptr){
 	
 	
 	printf("  Mines: %d", *ptr);
+	printf("\n     ");
+	
+	for (i = 0; i < M; i++)
+		printf(" %d ", i);
+		
 	printf("\n");
 	
 	for(i = 0; i < N; i++){
@@ -66,8 +71,8 @@ int main() {
 	//Add the mines
 	for(i = 0; i < N; i++){
 		for(j = 0; j < M; j++){
-			//Get a random number between 0 - 3		
-			mine = rand() % 4;
+			//Get a random number between 0 - 5	
+			mine = rand() % 6;
 			//Put the mine in the random choosen place
 			if (mine == 1){
 				A[i][j] = -1;
