@@ -5,12 +5,19 @@
 #define N 10
 #define M 10
 
-void printMatrix(int C[][M], int A[][M]){
+void printMatrix(int C[][M], int A[][M], int *ptr){
 	
 	int i, j;
 	
+	
+	printf("  Mines: %d", *ptr);
+	printf("\n");
+	
 	for(i = 0; i < N; i++){
 		for(j = 0; j < M; j++){
+			
+			if (j == 0)
+			printf("  %d: ", i);
 			
 			if (C[i][j] == 0)
 			printf(" . ");
@@ -25,6 +32,8 @@ void printMatrix(int C[][M], int A[][M]){
 void endGame(int A[][M], int a, int b){
 	
 	int i, j;
+	
+	printf("\n");
 	
 	for(i = 0; i < N; i++){
 		for(j = 0; j < M; j++){
@@ -42,10 +51,13 @@ void endGame(int A[][M], int a, int b){
 
 int main() {
 	
-	int i, j, l, k, mine, a, b;
+	int i, j, l, k, mine, a, b, mines;
 	
 	int A[N][M];
 	int C[N][M];
+	
+	mines = 0;
+	int *minesaptr = &mines;
 	
 	
 	//This is for the random
@@ -59,6 +71,7 @@ int main() {
 			//Put the mine in the random choosen place
 			if (mine == 1){
 				A[i][j] = -1;
+				++mines;
 			}else{
 				A[i][j] = 0;
 			}
@@ -88,10 +101,12 @@ int main() {
 	
 	
 	do{
-		printMatrix(C, A);
+		printMatrix(C, A, minesaptr);
+		printf("x: ", A[i][j]);
 		scanf("%d", &a);
+		printf("y: ", A[i][j]);
 		scanf("%d", &b);
-		C[a][b] = 1;
+		C[a][b]= 1;
 		
 		if (A[a][b] == -1){
 			endGame(A, a, b);
