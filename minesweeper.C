@@ -2,15 +2,15 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define N 10
-#define M 10
+#define N 4
+#define M 4
 
 void printMatrix(int C[][M], int A[][M], int *ptr){
 	
 	int i, j;
 	
 	
-	printf("  Mines: %d", *ptr);
+	printf("  Mines: %d ", *ptr);
 	printf("\n     ");
 	
 	for (i = 0; i < M; i++)
@@ -57,14 +57,15 @@ void endGame(int A[][M], int a, int b){
 int main() {
 	
 	int i, j, l, k, mine, a, b, mines, win;
-	
-	win = 0;
-	
+		
 	int A[N][M];
 	int C[N][M];
 	
+	win = 0;
 	mines = 0;
+	
 	int *minesaptr = &mines;
+	
 	
 	
 	//This is for the random
@@ -113,14 +114,22 @@ int main() {
 		scanf("%d", &a);
 		printf("y: ", A[i][j]);
 		scanf("%d", &b);
-		C[a][b]= 1;
+		
+		
+		//Check that is an unopened box
+		if (C[a][b] == 0){
+			C[a][b]= 1;	
+			++win;
+		}
+		
+		
 		
 		if (A[a][b] == -1){
 			endGame(A, a, b);
 			a = -1;
 		}else {
-			++win;
 			if (win == (N*M)-mines){
+				printMatrix(C, A, minesaptr);
 				printf("\nYou win!");
 				a = -1;
 			}
