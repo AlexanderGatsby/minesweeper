@@ -115,12 +115,15 @@ int main() {
 		printf("y: ", A[i][j]);
 		scanf("%d", &b);
 		
-		
-		//Check that is an unopened box
-		if (C[a][b] == 0){
-			C[a][b]= 1;	
-			++win;
+		//Check if the box is in the matrix
+		if (a >= 0 && a <= N-1 && b >= 0 && b <= M-1){
+			//Check that is an unopened box
+			if (C[a][b] == 0){
+				C[a][b]= 1;	
+				++win;
+			}
 		}
+		
 		
 		
 		
